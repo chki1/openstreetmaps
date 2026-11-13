@@ -14,7 +14,7 @@ export const PLACES: Place[] = [
   {
     id: "Mrpltz",
     name: "Marienplatz",
-    description: "NO DESCRIPTION.",
+    description: "S-TIER PLACE IN MUNICH",
     lat: 48.1373,
     lng: 11.5755,
   },
