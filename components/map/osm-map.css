@@ -1,0 +1,234 @@
+/* /map хуудасны загвар. Leaflet-ийн өөрийн CSS-ийг MapLoader.tsx дотор import хийсэн. */
+
+.osm-page {
+  --osm-bg: #f6f7f9;
+  --osm-surface: #ffffff;
+  --osm-text: #14171c;
+  --osm-muted: #5d6673;
+  --osm-border: #e2e5ea;
+  --osm-accent: #0b6ef3;
+  --osm-accent-text: #ffffff;
+
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  background: var(--osm-bg);
+  color: var(--osm-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  .osm-page {
+    --osm-bg: #0f1216;
+    --osm-surface: #181c22;
+    --osm-text: #eef1f5;
+    --osm-muted: #9aa3b0;
+    --osm-border: #2a3038;
+    --osm-accent: #4c95ff;
+  }
+}
+
+.osm-header {
+  max-width: 1100px;
+  margin: 0 auto 16px;
+}
+
+.osm-header h1 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  font-weight: 650;
+}
+
+.osm-header p {
+  margin: 0;
+  color: var(--osm-muted);
+}
+
+.osm-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 860px) {
+  .osm-layout {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+.osm-map {
+  height: 65vh;
+  min-height: 360px;
+  border-radius: 14px;
+  border: 1px solid var(--osm-border);
+  overflow: hidden;
+  z-index: 0; /* Leaflet-ийн давхаргууд header-ээс дээш гарахаас сэргийлнэ */
+}
+
+.osm-map--loading {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  color: var(--osm-muted);
+  background: var(--osm-surface);
+}
+
+/* --- Жагсаалт --- */
+
+/* --- Хажуугийн багана: байршлын товч + жагсаалт --- */
+
+.osm-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.osm-locate {
+  padding: 12px;
+  background: var(--osm-surface);
+  border: 1px solid var(--osm-border);
+  border-radius: 12px;
+}
+
+.osm-locate__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.osm-btn {
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--osm-text);
+  background: var(--osm-surface);
+  border: 1px solid var(--osm-border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.osm-btn--primary {
+  color: var(--osm-accent-text);
+  background: var(--osm-accent);
+  border-color: var(--osm-accent);
+}
+
+.osm-btn:hover,
+.osm-btn:focus-visible {
+  outline: 2px solid var(--osm-accent);
+  outline-offset: 2px;
+}
+
+.osm-status {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  color: var(--osm-muted);
+}
+
+.osm-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.osm-list button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--osm-surface);
+  border: 1px solid var(--osm-border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.osm-list button:hover,
+.osm-list button:focus-visible {
+  border-color: var(--osm-accent);
+  outline: none;
+}
+
+.osm-list__num {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--osm-accent);
+  color: var(--osm-accent-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.osm-list__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.osm-list__name {
+  font-weight: 600;
+}
+
+.osm-list__coords {
+  font-size: 0.8rem;
+  color: var(--osm-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Marker (L.divIcon) --- */
+
+.osm-pin {
+  background: none;
+  border: none;
+}
+
+.osm-pin__body {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  transform: translateX(-50%) rotate(-45deg);
+  border-radius: 50% 50% 50% 0;
+  background: #e5484d;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  display: grid;
+  place-items: center;
+}
+
+.osm-pin__label {
+  transform: rotate(45deg);
+  color: #ffffff;
+  font: 700 11px/1 system-ui, sans-serif;
+}
+
+/* --- Popup --- */
+
+.osm-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: system-ui, sans-serif;
+}
+
+.osm-popup p {
+  margin: 0;
+}
+
+.osm-popup code {
+  font-size: 0.75rem;
+  color: #5d6673;
+}
